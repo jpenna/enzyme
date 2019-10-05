@@ -887,6 +887,38 @@ class ReactWrapper {
   }
 
   /**
+   * Returns a new `ReactWrapper` around the node provided to the prop
+   *
+   * @param {String} propName
+   * @returns {ReactWrapper}
+   */
+  wrapProp(propName) {
+    const adapter = getAdapter(this[OPTIONS]);
+    if (typeof adapter.wrap !== 'function') {
+      throw new RangeError('your adapter does not support `wrap`. Try upgrading it!');
+    }
+
+    return this.single('wrapProp', (n) => {
+      if (n.nodeType === 'host') {
+        throw new TypeError('ReactWrapper::wrapProp() can only be called on custom components');
+      }
+      if (typeof propName !== 'string') {
+        throw new TypeError('ReactWrapper::wrapProp(): `propName` must be a string');
+      }
+      const props = this.props();
+      if (!has(props, propName)) {
+        throw new Error(`ReactWrapper::wrapProp(): no prop called "${propName}" found`);
+      }
+      const node = props[propName];
+      if (!adapter.isValidElement(node)) {
+        throw new TypeError(`ReactWrapper::wrapProp(): prop "${propName}" does not contain a valid element`);
+      }
+
+      return new ReactWrapper(node);
+    });
+  }
+
+  /**
    * Returns the key assigned to the current node.
    *
    * @returns {String}

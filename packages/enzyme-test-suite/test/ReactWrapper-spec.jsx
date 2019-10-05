@@ -1043,6 +1043,7 @@ describeWithDOM('mount', () => {
     'text',
     'unmount',
     'wrap',
+    'wrapProp',
   );
   describeHooks(
     { Wrap, Wrapper },

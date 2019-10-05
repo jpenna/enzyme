@@ -1298,7 +1298,7 @@ class ShallowWrapper {
 
   /**
    * Used to invoke a function prop.
-   * Will invoke an function prop and return its value.
+   * Will invoke a function prop and return its value.
    *
    * @param {String} propName
    * @returns {Any}
@@ -1350,6 +1350,38 @@ class ShallowWrapper {
         const wrapped = adapter.wrap(element);
         return this.wrap(wrapped, null, this[OPTIONS]);
       };
+    });
+  }
+
+  /**
+   * Returns a new `ShallowWrapper` around the node provided to the prop
+   *
+   * @param {String} propName
+   * @returns {ShallowWrapper}
+   */
+  wrapProp(propName) {
+    const adapter = getAdapter(this[OPTIONS]);
+    if (typeof adapter.wrap !== 'function') {
+      throw new RangeError('your adapter does not support `wrap`. Try upgrading it!');
+    }
+
+    return this.single('wrapProp', (n) => {
+      if (n.nodeType === 'host') {
+        throw new TypeError('ShallowWrapper::wrapProp() can only be called on custom components');
+      }
+      if (typeof propName !== 'string') {
+        throw new TypeError('ShallowWrapper::wrapProp(): `propName` must be a string');
+      }
+      const props = this.props();
+      if (!has(props, propName)) {
+        throw new Error(`ShallowWrapper::wrapProp(): no prop called "${propName}" found`);
+      }
+      const node = props[propName];
+      if (!adapter.isValidElement(node)) {
+        throw new TypeError(`ShallowWrapper::wrapProp(): prop "${propName}" does not contain a valid element`);
+      }
+
+      return new ShallowWrapper(node);
     });
   }
 
