@@ -692,7 +692,7 @@ class ShallowWrapper {
       throw new Error('ShallowWrapper::setProps() can only be called on the root');
     }
     if (arguments.length > 1 && typeof callback !== 'function') {
-      throw new TypeError('ReactWrapper::setProps() expects a function as its second argument');
+      throw new TypeError('ShallowWrapper::setProps() expects a function as its second argument');
     }
     this.rerender(props);
     if (callback) {
@@ -722,7 +722,7 @@ class ShallowWrapper {
       throw new Error('ShallowWrapper::setState() can only be called on class components');
     }
     if (arguments.length > 1 && typeof callback !== 'function') {
-      throw new TypeError('ReactWrapper::setState() expects a function as its second argument');
+      throw new TypeError('ShallowWrapper::setState() expects a function as its second argument');
     }
 
     this.single('setState', () => {

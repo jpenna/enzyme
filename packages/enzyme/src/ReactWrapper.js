@@ -1042,7 +1042,7 @@ class ReactWrapper {
    *
    * @param {Number} begin
    * @param {Number} end
-   * @returns {ShallowWrapper}
+   * @returns {ReactWrapper}
    */
   slice(begin, end) {
     return this.wrap(this.getNodesInternal().slice(begin, end));
