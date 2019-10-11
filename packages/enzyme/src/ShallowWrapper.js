@@ -1357,18 +1357,16 @@ class ShallowWrapper {
    * Returns a new `ShallowWrapper` around the node provided to the prop
    *
    * @param {String} propName
+   * @param {Object} options
    * @returns {ShallowWrapper}
    */
-  wrapProp(propName) {
+  wrapProp(propName, options) {
     const adapter = getAdapter(this[OPTIONS]);
     if (typeof adapter.wrap !== 'function') {
       throw new RangeError('your adapter does not support `wrap`. Try upgrading it!');
     }
 
-    return this.single('wrapProp', (n) => {
-      if (n.nodeType === 'host') {
-        throw new TypeError('ShallowWrapper::wrapProp() can only be called on custom components');
-      }
+    return this.single('wrapProp', () => {
       if (typeof propName !== 'string') {
         throw new TypeError('ShallowWrapper::wrapProp(): `propName` must be a string');
       }
@@ -1381,7 +1379,7 @@ class ShallowWrapper {
         throw new TypeError(`ShallowWrapper::wrapProp(): prop "${propName}" does not contain a valid element`);
       }
 
-      return new ShallowWrapper(node);
+      return new ShallowWrapper(node, null, options);
     });
   }
 

@@ -1,12 +1,12 @@
-# `.wrapProp(propName) => ShallowWrapper`
+# `.wrapProp(propName[, options]) => ShallowWrapper`
 
 Returns a new wrapper around the component provided to the original wrapper's prop `propName`.`
 
-NOTE: can only be called on wrapper of a single non-DOM component element node.
-
 #### Arguments
 
-1. `propName` (`String`):
+1. `propName` (`String`): Name of the prop to be wrapped
+2. `options` (`Object` [optional]): Will be passed to the renderer constructor. 
+   Refer to the [`shallow()` options](https://airbnb.io/enzyme/docs/api/shallow.html#arguments).
 
 This essentially does:
 

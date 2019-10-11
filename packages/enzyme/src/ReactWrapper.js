@@ -890,9 +890,10 @@ class ReactWrapper {
    * Returns a new `ReactWrapper` around the node provided to the prop
    *
    * @param {String} propName
+   * @param {Object} options
    * @returns {ReactWrapper}
    */
-  wrapProp(propName) {
+  wrapProp(propName, options) {
     const adapter = getAdapter(this[OPTIONS]);
     if (typeof adapter.wrap !== 'function') {
       throw new RangeError('your adapter does not support `wrap`. Try upgrading it!');
@@ -914,7 +915,7 @@ class ReactWrapper {
         throw new TypeError(`ReactWrapper::wrapProp(): prop "${propName}" does not contain a valid element`);
       }
 
-      return new ReactWrapper(node);
+      return new ReactWrapper(node, null, options);
     });
   }
 

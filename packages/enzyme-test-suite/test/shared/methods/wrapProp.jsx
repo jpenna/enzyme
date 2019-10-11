@@ -33,8 +33,8 @@ export default function describeWrapProp({
       it('returns a wrapper around the node provided by the given prop', () => {
         const wrapper = Wrap(<Container />);
         const wrappedPropWrapper = wrapper.find(Outer).wrapProp('node');
-        expect(wrappedPropWrapper.find('div').equals(<div className="inner" />)).to.be.true;
-        if (isShallow) expect(wrappedPropWrapper.equals(<div className="inner" />)).to.be.true;
+        expect(wrappedPropWrapper.find('div').equals(<div className="inner" />)).to.equal(true);
+        if (isShallow) expect(wrappedPropWrapper.equals(<div className="inner" />)).to.equal(true);
       });
 
       it('throws on a non-string prop name', () => {
