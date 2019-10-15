@@ -899,10 +899,7 @@ class ReactWrapper {
       throw new RangeError('your adapter does not support `wrap`. Try upgrading it!');
     }
 
-    return this.single('wrapProp', (n) => {
-      if (n.nodeType === 'host') {
-        throw new TypeError('ReactWrapper::wrapProp() can only be called on custom components');
-      }
+    return this.single('wrapProp', () => {
       if (typeof propName !== 'string') {
         throw new TypeError('ReactWrapper::wrapProp(): `propName` must be a string');
       }
