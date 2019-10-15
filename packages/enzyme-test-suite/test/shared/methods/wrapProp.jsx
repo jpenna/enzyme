@@ -61,19 +61,6 @@ export default function describeWrapProp({
         );
       });
 
-      it('throws on host elements', () => {
-        class Div extends React.Component {
-          render() {
-            const { children } = this.props;
-            return <div>{children}</div>;
-          }
-        }
-
-        const wrapper = WrapRendered(<Div />);
-        expect(wrapper.is('div')).to.equal(true);
-        expect(() => wrapper.wrapProp('foo')).to.throw();
-      });
-
       wrap()
         .withOverride(() => getAdapter(), 'wrap', () => undefined)
         .it('throws with a react adapter that lacks a `.wrap`', () => {
