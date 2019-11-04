@@ -243,3 +243,6 @@ Returns whether or not all of the nodes in the wrapper pass the provided predica
 
 #### [`.dive([options]) => ShallowWrapper`](ShallowWrapper/dive.md)
 Shallow render the one non-DOM child of the current wrapper, and return a wrapper around the result.
+
+#### [`.wrapProp() => ShallowWrapper`](ShallowWrapper/wrapProp.md)
+Returns a new wrapper around the component provided to the original wrapper's prop `propName`.

@@ -1,6 +1,6 @@
 # `.wrapProp(propName[, options]) => ShallowWrapper`
 
-Returns a new wrapper around the component provided to the original wrapper's prop `propName`.`
+Returns a new wrapper around the component provided to the original wrapper's prop `propName`.
 
 #### Arguments
 
@@ -24,28 +24,27 @@ const node = shallow(<Node />);
 ##### Test Setup
 
 ```jsx
-class Inner extends React.Component {
-  render() {
-    return <div className="inner" />;
-  }
-}
+import PropTypes from 'prop-types';
 
-class Outer extends React.Component {
-  render() {
-    if (!this.props.renderNode) return <div />;
-    return this.props.node;
-  }
-}
+const Inner = () => <div className="inner" />;
 
-class Container extends React.Component {
-  render() {
-    /*
-     * Just as an example, <Outer> can render or not the provided prop.
-     * Independent of what it does, you want to test the component given to node.
-    */
-    return <Outer renderNode={false} node={<Inner />} />;
-  }
-}
+const Outer = ({ renderNode, node }) => {
+  if (!renderNode) return node;
+  return null;
+};
+Outer.propTypes = {
+  renderNode: PropTypes.bool.isRequired,
+  node: PropTypes.node.isRequired,
+};
+
+/*
+  * Just as an example, <Outer> can render or not the provided prop.
+  * Independent of what it does, we want to test the component passed in `node`.
+*/
+const Container = () => {
+  const node = <Inner />;
+  return <Outer renderNode node={node} />;
+};
 ```
 
 ##### Testing with no arguments

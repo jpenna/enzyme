@@ -241,3 +241,6 @@ Returns the node that matches the provided reference name.
 
 #### [`.detach() => void`](ReactWrapper/detach.md)
 Unmount the component from the DOM node it's attached to.
+
+#### [`.wrapProp() => ReactWrapper`](ReactWrapper/wrapProp.md)
+Returns a new wrapper around the component provided to the original wrapper's prop `propName`.
