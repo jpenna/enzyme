@@ -75,16 +75,16 @@ Remove nodes in the current wrapper that do not return true for the provided pre
 Removes nodes that are not host nodes; e.g., this will only return HTML nodes.
 
 #### [`.contains(nodeOrNodes) => Boolean`](ReactWrapper/contains.md)
-Returns whether or not a given node or array of nodes is somewhere in the render tree.
+Returns whether or not a given node or array of nodes exists in the render tree.
 
 #### [`.containsMatchingElement(node) => Boolean`](ReactWrapper/containsMatchingElement.md)
-Returns whether or not a given react element is somewhere in the render tree.
+Returns whether or not a given react element exists in the render tree.
 
 #### [`.containsAllMatchingElements(nodes) => Boolean`](ReactWrapper/containsAllMatchingElements.md)
-Returns whether or not all the given react elements are somewhere in the render tree.
+Returns whether or not all the given react elements exist in the render tree.
 
 #### [`.containsAnyMatchingElements(nodes) => Boolean`](ReactWrapper/containsAnyMatchingElements.md)
-Returns whether or not one of the given react elements is somewhere in the render tree.
+Returns whether or not one of the given react elements exist in the render tree.
 
 #### [`.equals(node) => Boolean`](ReactWrapper/equals.md)
 Returns whether or not the current wrapper root node render tree looks like the one passed in.
@@ -107,13 +107,13 @@ Returns whether or not the current component returns a falsy value.
 #### [`.not(selector) => ReactWrapper`](ReactWrapper/not.md)
 Remove nodes in the current wrapper that match the provided selector. (inverse of `.filter()`)
 
-#### [`.children() => ReactWrapper`](ReactWrapper/children.md)
+#### [`.children([selector]) => ReactWrapper`](ReactWrapper/children.md)
 Get a wrapper with all of the children nodes of the current wrapper.
 
 #### [`.childAt(index) => ReactWrapper`](ReactWrapper/childAt.md)
 Returns a new wrapper with child at the specified index.
 
-#### [`.parents() => ReactWrapper`](ReactWrapper/parents.md)
+#### [`.parents([selector]) => ReactWrapper`](ReactWrapper/parents.md)
 Get a wrapper with all of the parents (ancestors) of the current node.
 
 #### [`.parent() => ReactWrapper`](ReactWrapper/parent.md)
