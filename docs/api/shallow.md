@@ -83,7 +83,7 @@ Returns whether or not a given node or array of nodes is somewhere in the render
 Returns whether or not a given react element exists in the shallow render tree.
 
 #### [`.containsAllMatchingElements(nodes) => Boolean`](ShallowWrapper/containsAllMatchingElements.md)
-Returns whether or not all the given react elements exists in the shallow render tree.
+Returns whether or not all the given react elements exist in the shallow render tree.
 
 #### [`.containsAnyMatchingElements(nodes) => Boolean`](ShallowWrapper/containsAnyMatchingElements.md)
 Returns whether or not one of the given react elements exists in the shallow render tree.
@@ -112,13 +112,13 @@ Returns whether or not the current component returns a falsy value.
 #### [`.not(selector) => ShallowWrapper`](ShallowWrapper/not.md)
 Remove nodes in the current wrapper that match the provided selector. (inverse of `.filter()`)
 
-#### [`.children() => ShallowWrapper`](ShallowWrapper/children.md)
+#### [`.children([selector]) => ShallowWrapper`](ShallowWrapper/children.md)
 Get a wrapper with all of the children nodes of the current wrapper.
 
 #### [`.childAt(index) => ShallowWrapper`](ShallowWrapper/childAt.md)
 Returns a new wrapper with child at the specified index.
 
-#### [`.parents() => ShallowWrapper`](ShallowWrapper/parents.md)
+#### [`.parents([selector]) => ShallowWrapper`](ShallowWrapper/parents.md)
 Get a wrapper with all of the parents (ancestors) of the current node.
 
 #### [`.parent() => ShallowWrapper`](ShallowWrapper/parent.md)
